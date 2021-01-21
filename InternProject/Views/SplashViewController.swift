@@ -7,6 +7,7 @@
 
 import UIKit
 import Network
+import Firebase
 
 class SplashViewController: UIViewController {
     @IBOutlet weak var connectionLabel: UILabel!
@@ -14,7 +15,40 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MonitorNetwork()
-        // Do any additional setup after loading the view.
+        setupRemoteConfigDefaults()
+        updateLabelWithRC()
+        fetchRemoteConfig()
+    }
+    
+    func updateLabelWithRC() {
+        let labelText = RemoteConfig.remoteConfig().configValue(forKey: "labelText").stringValue ?? ""
+        
+        connectionLabel.text = labelText
+        
+    }
+    
+    func setupRemoteConfigDefaults() {
+        let defaultValues = ["labelText": "Default Text" as NSObject]
+        RemoteConfig.remoteConfig().setDefaults(defaultValues)
+        
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        RemoteConfig.remoteConfig().configSettings = settings
+    }
+    
+    func fetchRemoteConfig() {
+        updateLabelWithRC()
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: 0, completionHandler: {
+            [unowned self] (status, error) in
+            guard error == nil else {
+                print("WE HAVE AN ERROR!!!")
+                return
+            }
+            
+            print("Success!")
+            RemoteConfig.remoteConfig().activate(completion: nil)
+            self.updateLabelWithRC()
+        })
     }
     
     
@@ -27,12 +61,14 @@ class SplashViewController: UIViewController {
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
                 DispatchQueue.main.async {
-                    self.connectionLabel.text = "Internet is connected."
+                    print("Internet is connected.")
                 }
             }
             else {
                 DispatchQueue.main.async {
-                    self.connectionLabel.text = "Internet is not connected."
+                    print("Internet is not connected.")
+                    let alert = UIAlertController(title: "Attention", message: "Internet is not connected.", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
