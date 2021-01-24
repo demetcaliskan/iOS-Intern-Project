@@ -8,9 +8,12 @@
 import UIKit
 import Network
 import Firebase
+import FirebaseRemoteConfig
 
 class SplashViewController: UIViewController {
     @IBOutlet weak var connectionLabel: UILabel!
+    
+    var isConnected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,20 +21,19 @@ class SplashViewController: UIViewController {
         setupRemoteConfigDefaults()
         updateLabelWithRC()
         fetchRemoteConfig()
+        
     }
     
     func updateLabelWithRC() {
         let labelText = RemoteConfig.remoteConfig().configValue(forKey: "labelText").stringValue ?? ""
         
         connectionLabel.text = labelText
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.performSegue(withIdentifier: "splashToHome", sender: nil)
-        }
+        
         
     }
     
     func setupRemoteConfigDefaults() {
-        let defaultValues = ["labelText": "Default Text" as NSObject]
+        let defaultValues = ["labelText": " " as NSObject]
         RemoteConfig.remoteConfig().setDefaults(defaultValues)
         
         let settings = RemoteConfigSettings()
@@ -65,6 +67,10 @@ class SplashViewController: UIViewController {
             if path.status == .satisfied {
                 DispatchQueue.main.async {
                     print("Internet is connected.")
+                    self.isConnected = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.performSegue(withIdentifier: "splashToHome", sender: nil)
+                    }
                 }
             }
             else {
@@ -72,6 +78,7 @@ class SplashViewController: UIViewController {
                     print("Internet is not connected.")
                     let alert = UIAlertController(title: "Attention", message: "Internet is not connected.", preferredStyle: .alert)
                     self.present(alert, animated: true, completion: nil)
+                    self.isConnected = false
                 }
             }
         }
