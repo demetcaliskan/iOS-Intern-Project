@@ -24,6 +24,9 @@ class SplashViewController: UIViewController {
         let labelText = RemoteConfig.remoteConfig().configValue(forKey: "labelText").stringValue ?? ""
         
         connectionLabel.text = labelText
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.performSegue(withIdentifier: "splashToHome", sender: nil)
+        }
         
     }
     
@@ -74,6 +77,6 @@ class SplashViewController: UIViewController {
         }
         
     }
+    
 
 }
-

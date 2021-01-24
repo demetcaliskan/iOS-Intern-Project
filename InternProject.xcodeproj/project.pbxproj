@@ -15,8 +15,9 @@
 		6EAAC09825B9064D00851EB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EAAC09625B9064D00851EB8 /* LaunchScreen.storyboard */; };
 		6EAAC0A325B9064D00851EB8 /* InternProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAC0A225B9064D00851EB8 /* InternProjectTests.swift */; };
 		6EAAC0AE25B9064D00851EB8 /* InternProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAC0AD25B9064D00851EB8 /* InternProjectUITests.swift */; };
-		6EAAC0C325B9086C00851EB8 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAC0C225B9086C00851EB8 /* HomepageViewController.swift */; };
+		6EAAC0C325B9086C00851EB8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAAC0C225B9086C00851EB8 /* HomeViewController.swift */; };
 		6EAAC0DE25B91FB600851EB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EAAC0DD25B91FB600851EB8 /* GoogleService-Info.plist */; };
+		6EB9A2B025BD027A004A7D75 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9A2AF25BD027A004A7D75 /* CustomTableViewCell.swift */; };
 		81568D91260B040E82A05EE6 /* Pods_InternProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CFC99A9DD0C800492B87B3 /* Pods_InternProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +54,9 @@
 		6EAAC0A925B9064D00851EB8 /* InternProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InternProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EAAC0AD25B9064D00851EB8 /* InternProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternProjectUITests.swift; sourceTree = "<group>"; };
 		6EAAC0AF25B9064D00851EB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6EAAC0C225B9086C00851EB8 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
+		6EAAC0C225B9086C00851EB8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6EAAC0DD25B91FB600851EB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6EB9A2AF25BD027A004A7D75 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		D86D81539707543B9CBB7A3B /* Pods-InternProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternProject.debug.xcconfig"; path = "Target Support Files/Pods-InternProject/Pods-InternProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DF09D050DF62C121C3D4A9C9 /* Pods-InternProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InternProject.release.xcconfig"; path = "Target Support Files/Pods-InternProject/Pods-InternProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,7 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				6EAAC08F25B9064B00851EB8 /* SplashViewController.swift */,
-				6EAAC0C225B9086C00851EB8 /* HomepageViewController.swift */,
+				6EAAC0C225B9086C00851EB8 /* HomeViewController.swift */,
+				6EB9A2AF25BD027A004A7D75 /* CustomTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,7 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EAAC0C325B9086C00851EB8 /* HomepageViewController.swift in Sources */,
+				6EAAC0C325B9086C00851EB8 /* HomeViewController.swift in Sources */,
+				6EB9A2B025BD027A004A7D75 /* CustomTableViewCell.swift in Sources */,
 				6EAAC09025B9064B00851EB8 /* SplashViewController.swift in Sources */,
 				6EAAC08C25B9064B00851EB8 /* AppDelegate.swift in Sources */,
 				6EAAC08E25B9064B00851EB8 /* SceneDelegate.swift in Sources */,
@@ -450,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
